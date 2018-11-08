@@ -10,4 +10,6 @@ import cn.mybatis.day02.entity.EmpBak;
  */
 public interface IEmpBakDao {
     public EmpBak getEmpByDeptNo(int deptid);
+
+    public EmpBak getEmpByDeptNoMultiSql(int deptid);
 }

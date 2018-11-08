@@ -12,26 +12,26 @@
         </association>
     </resultMap>
 
-    <!--一对多多条sql
+    <!-- 多对一多条sql
     oftype  ：
     select：
     column:
     -->
-    <!--<resultMap id="deptMutilSQLMapper" type="Dept">
-        <id column="deptno" property="deptno"></id>
-        <result column="deptname" property="deptname"></result>
-        <collection property="userList" ofType="UserInfo" select="getUserByIdSelect" column="deptno"></collection>
-    </resultMap>-->
+    <resultMap id="deptMutilSQLMapper" type="EmpBak">
+        <id column="id" property="id"></id>
+        <result column="empname" property="empnames"></result>
+        <association property="dept" javaType="Dept" select="getEmpByDeptNoSelect" column="empid"></association>
+    </resultMap>
 
     <select id="getEmpByDeptNo" resultMap="empMapper">
         SELECT dept.deptno,deptname,empid,empname from dept,empbak where dept.deptno=empbak.deptid and empbak.empid=#{empid}
     </select>
 
-    <!--<select id="getUserByDeptNoMultiSql" resultMap="deptMutilSQLMapper">
-        SELECT  * from dept where deptno=#{deptno}
-    </select>-->
+    <select id="getEmpByDeptNoMultiSql" resultMap="deptMutilSQLMapper">
+        SELECT  * from empbak where deptid=#{deptid}
+    </select>
 
-   <!-- <select id="getUserByIdSelect" resultType="UserInfo">
-        select * FROM userinfo where deptno=#{deptno}
-    </select>-->
+    <select id="getEmpByDeptNoSelect" resultType="Dept">
+        select * FROM dept where deptno=#{deptno}
+    </select>
 </mapper>

@@ -1,4 +1,4 @@
-package cn.mybatis.day01base.entity;
+package cn.mybatis.day02.entity;
 
 import java.util.ArrayList;
 import java.util.List;
