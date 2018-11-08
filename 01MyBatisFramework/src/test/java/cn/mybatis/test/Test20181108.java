@@ -47,12 +47,21 @@ public class Test20181108 {
 
     //测试多对一单条sql
     @Test
-    public void testOnToManySingleSql() throws IOException {
+    public void testManyToOneSingleSql() throws IOException {
         SqlSession session = MyBatisUtil.getSession();
         IEmpBakDao mapper = session.getMapper(IEmpBakDao.class);
         EmpBak empBak = mapper.getEmpByDeptNo(2);
         System.out.println("员工："+empBak.getEmpnames()+"------"+empBak.getDept().getDeptname());
 
         MyBatisUtil.closeSession();
+    }
+
+    //测试多对一多条sql
+    @Test
+    public void testManyToOneMutilSql() throws IOException {
+        SqlSession session = MyBatisUtil.getSession();
+        IEmpBakDao mapper = session.getMapper(IEmpBakDao.class);
+        EmpBak empbak = mapper.getEmpByDeptNoMultiSql(3);
+        System.out.println(empbak.getEmpnames()+"=="+empbak.getDept().getDeptname());
     }
 }
