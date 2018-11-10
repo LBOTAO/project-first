@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mybatis.day02.dao.IStudentDao">
+    <select id="findTeacherBySid" resultType="Teacher">
+        select * FROM student66,teacher66,teacher_student66
+        where teacher_student66.sid=student66.sid
+        and teacher_student66.tid=teacher66.tid
+        and student66.sid=#{sid}
+    </select>
+</mapper>

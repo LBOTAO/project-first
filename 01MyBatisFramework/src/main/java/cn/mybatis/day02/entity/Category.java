@@ -11,9 +11,30 @@ public class Category {
     private String cname;  //父类名称
     private Integer pid;  //父分类
 
-    private List<Category> cates=new ArrayList<Category>();
+    private Category categorys;
 
+
+    private List<Category> cates=new ArrayList<Category>();
     @Override
+    public String toString() {
+        return "Category{" +
+                "cid=" + cid +
+                ", cname='" + cname + '\'' +
+                ", pid=" + pid +
+                ", category=" + categorys +
+                '}';
+    }
+
+    public Category getCategorys() {
+        return categorys;
+    }
+
+    public void setCategorys(Category categorys) {
+        this.categorys = categorys;
+    }
+
+
+   /* @Override
     public String toString() {
         return "Category{" +
                 "cid=" + cid +
@@ -21,7 +42,7 @@ public class Category {
                 ", pid=" + pid +
                 ", cates=" + cates +
                 '}';
-    }
+    }*/
 
     public Integer getCid() {
         return cid;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mybatis.day02.dao.ICategoryDao">
+    <resultMap id="CategoryMapper" type="Category">
+        <id column="cid" property="cid"></id>
+        <result column="cname" property="cname"></result>
+        <collection property="cates" javaType="Category" select="getChildrenListByPid" column="cid"></collection>
+    </resultMap>
+
+    <resultMap id="getCategoryParentById" type="Category">
+        <id column="cid" property="cid"></id>
+        <result column="cname" property="cname"></result>
+        <result column="pid" property="pid"></result>
+        <collection property="categorys" ofType="Category" select="getCategoriesByCid" column="pid"></collection>
+    </resultMap>
+    <!--自关联  按照父分类查找子分类-->
+    <select id="getChildrenListByPid" resultMap="CategoryMapper">
+        select * from category where pid=#{pid}
+    </select>
+    <!--自关联  按照子分类查找父分类-->
+    <select id="getCategoriesByCid" resultMap="getCategoryParentById">
+       select * from category where cid=#{cid}
+    </select>
+</mapper>
