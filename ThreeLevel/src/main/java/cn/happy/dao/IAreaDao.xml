@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.happy.dao.IAreaDao">
+    <resultMap id="getAreaMapper" type="City">
+        <id column="id" property="id"></id>
+        <result column="code" property="code"></result>
+        <result column="name" property="name"></result>
+        <result column="provincecode" property="provincecode"></result>
+        <collection property="areas" ofType="Area">
+            <id column="id" property="id"></id>
+            <result column="code" property="code"></result>
+            <result column="name" property="name"></result>
+            <result column="citycode" property="citycode"></result>
+        </collection>
+    </resultMap>
+
+    <resultMap id="getCityByProvCodeMapper" type="Province">
+        <id column="id" property="id"></id>
+        <result column="code" property="code"></result>
+        <result column="name" property="name"></result>
+        <collection property="citys" ofType="City">
+            <id column="id" property="id"></id>
+            <result column="code" property="code"></result>
+            <result column="name" property="name"></result>
+            <result column="provincecode" property="provincecode"></result>
+        </collection>
+    </resultMap>
+
+    <resultMap id="getAllProvinceMapper" type="Province">
+        <id column="id" property="id"></id>
+        <result column="code" property="code"></result>
+        <result column="name" property="name"></result>
+        <collection property="citys" ofType="City">
+            <id column="id" property="id"></id>
+            <result column="code" property="code"></result>
+            <result column="name" property="name"></result>
+            <result column="provincecode" property="provincecode"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getAreaByCityCode" resultMap="getAreaMapper">
+        select * from area,city where area.citycode=city.`code` and city.`code`=#{code}
+    </select>
+
+    <select id="getCityByProvCode" resultMap="getCityByProvCodeMapper">
+        select * from city,province where city.provincecode=province.`code` and city.provincecode=#{provincecode}
+    </select>
+
+    <select id="getAllProvince" resultMap="getAllProvinceMapper">
+        select * from province
+    </select>
+</mapper>
