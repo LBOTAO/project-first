@@ -5,7 +5,24 @@
 <configuration>
     <properties resource="jdbc.properties"></properties>
     <settings>
+        <!--开启自动映射
+        NONE,
+        PARTIAL,
+        FULL
+        -->
         <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!--
+        全局  启用或禁用延迟加载
+        true，
+        false
+        -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--
+        侵入式延迟加载  当检索主对象的属性时  会自动激活关联对象的属性
+        如果不检索默认发送一条sql，检索当前对象
+        false true    false
+        -->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
     <typeAliases>
         <!--<package name="cn.mybatis.day01base.entity"/>-->
@@ -28,5 +45,7 @@
         <mapper resource="cn/mybatis/day01base/mapper/IEmpDao.xml"/>-->
         <mapper resource="cn/mybatis/day02/mapper/IDeptDao.xml"/>
         <mapper resource="cn/mybatis/day02/mapper/IEmpDaoBak.xml"/>
+        <mapper resource="cn/mybatis/day02/mapper/ICategoryDao.xml"></mapper>
+        <mapper resource="cn/mybatis/day02/mapper/IStudentDao.xml"></mapper>
     </mappers>
 </configuration>
