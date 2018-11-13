@@ -1,4 +1,44 @@
 01.判断是输出流还是输入流的中间介质是内存
 
-多条件查询    如果查询条件来自多个表中的列
+02.多条件查询    如果查询条件来自多个表中的列
    入参可以使用  map集合   实体对象
+
+03.mybatis中的延迟加载对单条sql是不起作用的。
+    延迟加载 ：
+       直接加载
+       侵入式加载
+       深入加载
+
+2018年11月13日13:52:20---------------------------------------
+增删改会清空一级缓存
+
+
+二级缓存 配置
+
+在Mapper文件头指定使用缓存
+
+<cache readOnly=”true” size=”500” flushInterval=”120000” eviction=”LRU” />
+
+flashInterval指缓存过期时间，单位为毫秒，60000即为60秒，缺省值为空，即只要容量足够，永不过期
+
+size指缓存多少个对象，默认值为1024
+
+readOnly是否只读，如果为true，则所有相同的sql语句返回的是同一个对象（有助于提高性能，但并发操作同一条数据时，可能不安全），如果设置为false，则相同的sql，后面访问的是cache的clone副本。
+
+eviction是缓存的淘汰算法，可选值有"LRU"、"FIFO"、"SOFT"、"WEAK"，缺省值是LRU
+
+
+   LRU Least Recently Used 最近最少使用，移除最长时间不被使用的对象。
+
+　　FIFO first in first out  先进先出。
+
+　　SOFT软引用，基于垃圾回收器状态和软引用规则来移除对象。
+
+　　WEAK弱引用，基于垃圾回收器状态和弱引用规则
+
+二级缓存的关闭：
+分为两种 ：
+   全局关闭  <setting caCheEnable="type"></setting>
+
+   局部关闭
+   <select useCache="false">

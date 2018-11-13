@@ -23,10 +23,18 @@
         false true    false
         -->
         <setting name="aggressiveLazyLoading" value="false"/>
+        <!--
+        开启二级缓存条件之一
+        -->
+        <setting name="cacheEnabled" value="true"></setting>
+        <!--
+        指定日志
+        -->
+        <setting name="logImpl" value="LOG4J"></setting>
     </settings>
     <typeAliases>
-        <!--<package name="cn.mybatis.day01base.entity"/>-->
-        <package name="cn.mybatis.day02.entity"/>
+        <package name="cn.mybatis.day01base.entity"/>
+        <!--<package name="cn.mybatis.day02.entity"/>-->
     </typeAliases>
     <environments default="development">  <!--环境-->
         <environment id="development">
@@ -41,11 +49,11 @@
         </environment>
     </environments>
     <mappers>
-        <!--<mapper resource="cn/mybatis/day01base/mapper/IUserInfoDao.xml"/>
-        <mapper resource="cn/mybatis/day01base/mapper/IEmpDao.xml"/>-->
-        <mapper resource="cn/mybatis/day02/mapper/IDeptDao.xml"/>
+        <mapper resource="cn/mybatis/day01base/mapper/IUserInfoDao.xml"/>
+        <mapper resource="cn/mybatis/day01base/mapper/IEmpDao.xml"/>
+       <!-- <mapper resource="cn/mybatis/day02/mapper/IDeptDao.xml"/>
         <mapper resource="cn/mybatis/day02/mapper/IEmpDaoBak.xml"/>
         <mapper resource="cn/mybatis/day02/mapper/ICategoryDao.xml"></mapper>
-        <mapper resource="cn/mybatis/day02/mapper/IStudentDao.xml"></mapper>
+        <mapper resource="cn/mybatis/day02/mapper/IStudentDao.xml"></mapper>-->
     </mappers>
 </configuration>

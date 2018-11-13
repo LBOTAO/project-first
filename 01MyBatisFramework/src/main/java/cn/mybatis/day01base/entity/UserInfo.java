@@ -1,9 +1,11 @@
 package cn.mybatis.day01base.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/9/14.
  */
-public class UserInfo {
+public class UserInfo implements Serializable{
     private Integer id;  //用户id
     private String name;  //用户姓名
     private String sex;   //用户性别

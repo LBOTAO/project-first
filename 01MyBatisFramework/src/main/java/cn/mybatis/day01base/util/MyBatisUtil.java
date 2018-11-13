@@ -30,7 +30,7 @@ public class MyBatisUtil {
     static SqlSession session;
     public static SqlSession getSession() throws IOException {
         //通过会话工厂获取会话
-        session = sf.openSession(true);
+            session = sf.openSession(true);
         return session;
     }
 
