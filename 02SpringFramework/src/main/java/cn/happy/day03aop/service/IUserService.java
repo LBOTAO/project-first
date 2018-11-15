@@ -1,6 +1,6 @@
-package cn.happy.day03.service;
+package cn.happy.day03aop.service;
 
-import cn.happy.day03.entity.User;
+import cn.happy.day03aop.entity.User;
 
 /**
  * author：  刘涛

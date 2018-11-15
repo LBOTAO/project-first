@@ -1,6 +1,6 @@
-package cn.happy.day03.dao;
+package cn.happy.day03aop.dao;
 
-import cn.happy.day03.entity.User;
+import cn.happy.day03aop.entity.User;
 
 /**
  * author：  刘涛

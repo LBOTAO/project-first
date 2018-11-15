@@ -1,8 +1,7 @@
-package cn.happy.day03;
+package cn.happy.day03aop;
 
-import cn.happy.day02paper.Print;
-import cn.happy.day03.entity.User;
-import cn.happy.day03.service.IUserService;
+import cn.happy.day03aop.entity.User;
+import cn.happy.day03aop.service.IUserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

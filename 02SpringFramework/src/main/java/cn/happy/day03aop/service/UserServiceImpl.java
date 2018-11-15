@@ -1,7 +1,7 @@
-package cn.happy.day03.service;
+package cn.happy.day03aop.service;
 
-import cn.happy.day03.dao.IUserDAO;
-import cn.happy.day03.entity.User;
+import cn.happy.day03aop.dao.IUserDAO;
+import cn.happy.day03aop.entity.User;
 
 /**
  * author：  刘涛
@@ -10,6 +10,7 @@ import cn.happy.day03.entity.User;
  */
 public class UserServiceImpl implements IUserService {
     private IUserDAO userDAO;
+
     @Override
     public void save(User user) {
         userDAO.save(user);

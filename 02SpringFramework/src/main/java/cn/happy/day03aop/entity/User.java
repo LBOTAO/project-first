@@ -1,4 +1,4 @@
-package cn.happy.day03.entity;
+package cn.happy.day03aop.entity;
 
 /**
  * author：  刘涛
