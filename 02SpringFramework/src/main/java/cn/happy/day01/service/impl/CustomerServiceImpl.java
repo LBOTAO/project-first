@@ -11,7 +11,7 @@ import cn.happy.day01.service.ICustomerService;
  */
 public class CustomerServiceImpl implements ICustomerService {
     //ICustomerDao dao=new CustomerDaoImpl();
-    private ICustomerDao dao= BeanFactory.getCustomerDao();
+    private ICustomerDao dao= (ICustomerDao) BeanFactory.getBean("CUSTOMERDAO");
     @Override
     public void saveCustomer() {
         System.out.println("service调用dao层数据持久层");

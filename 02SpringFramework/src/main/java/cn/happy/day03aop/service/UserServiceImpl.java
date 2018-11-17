@@ -16,6 +16,11 @@ public class UserServiceImpl implements IUserService {
         userDAO.save(user);
     }
 
+    @Override
+    public int del(int id) {
+       return userDAO.del(id);
+    }
+
     public IUserDAO getUserDAO() {
         return userDAO;
     }

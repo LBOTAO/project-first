@@ -3,6 +3,8 @@ package cn.happy.day03aop;
 import cn.happy.day03aop.entity.User;
 import cn.happy.day03aop.service.IUserService;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,7 +18,7 @@ public class Test20181114 {
     public void getBean(){
         ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContextDay03.xml");
         IUserService userService = (IUserService)ctx.getBean("userService");
-        userService.save(new User());
+        userService.del(2);
     }
 
 }

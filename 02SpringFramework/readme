@@ -5,3 +5,30 @@ day01-----
      反射  Class.forName("com.jdbc.mysql");
  反射创建类对象引发的问题：
      通过配置文件来反射创建类对象
+
+什么是控制反转 inversion  of  control  ioc
+   ”反转“  可以理解成本来我们需要new创建对象   现在反转了  spring容器帮我们创建 把控制权交给spring容器
+   不用我们主动new,而是我们需要的时候
+   去spring容器中索取所需要的对象实例。
+
+
+ Bean的两种创建方式：
+   BeanFactory   延迟加载创建方式
+   ApplicationContext   立即加载创建方式
+
+ Bean的三种创建方式:
+   第一种：使用默认无参构造函数
+   第二种： 使用静态工厂
+   第三种：使用实例工厂
+
+
+spring依赖注入  ：
+  三种  ：set方法注入
+         构造注入
+         p命名空间 注入  本质上还是set方法注入
+
+bean  ：---》》autowire:
+
+   byType: 按照对象的类型进行注入  如果多个类型匹配  使用要注入对象的变量名作为bean的id
+   byName:直接按照bean的id注入
+

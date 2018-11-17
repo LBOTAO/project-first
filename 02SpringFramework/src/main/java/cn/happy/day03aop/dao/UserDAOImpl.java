@@ -12,4 +12,10 @@ public class UserDAOImpl implements IUserDAO {
     public void save(User user) {
         System.out.println("save ok!");
     }
+
+    @Override
+    public int del(int id) {
+        System.out.println("hehe");
+       return 2;
+    }
 }

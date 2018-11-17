@@ -18,9 +18,13 @@ public class Test20181114 {
      */
     @Test
     public void test() throws Exception {
-        ICustomerService service = BeanFactory.getCustomerService();
+        ICustomerService service = (ICustomerService) BeanFactory.getBean("CUSTOMERSERVICE");
         service.saveCustomer();
     }
+
+    /**
+     * 对于控制反转的第一个测试
+     */
     @Test
     public void getBean(){
         ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");

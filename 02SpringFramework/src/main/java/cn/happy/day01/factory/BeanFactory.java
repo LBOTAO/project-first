@@ -4,26 +4,23 @@ package cn.happy.day01.factory;
 import cn.happy.day01.dao.ICustomerDao;
 import cn.happy.day01.service.ICustomerService;
 
+import java.util.ResourceBundle;
+
+
 /**
  * author：  刘涛
  *
  * @create 2018-11-14 17:45
  */
 public class BeanFactory {
-    public static ICustomerService getCustomerService() {
+    private static ResourceBundle bundle=ResourceBundle.getBundle("bean");
+    public static Object getBean(String beanName) {
         try {
-            return (ICustomerService) Class.forName("cn.happy.day01.service.impl.CustomerServiceImpl").newInstance();
+            String beanPath = bundle.getString(beanName);
+            return Class.forName(beanPath).newInstance();
         } catch (Exception e) {
             throw new RuntimeException();
         }
 
-    }
-
-    public static ICustomerDao getCustomerDao(){
-        try {
-            return (ICustomerDao) Class.forName("cn.happy.day01.dao.impl.CustomerDaoImpl").newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException();
-        }
     }
 }

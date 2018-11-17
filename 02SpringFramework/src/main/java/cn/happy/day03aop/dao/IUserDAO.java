@@ -9,4 +9,6 @@ import cn.happy.day03aop.entity.User;
  */
 public interface IUserDAO {
     public void save(User user);
+
+    public int del(int id);
 }

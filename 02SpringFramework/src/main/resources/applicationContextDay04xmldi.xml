@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--p命名空间注入
+    需要有get  set方法 无参 带参方法
+    -->
+    <bean id="pNameSpance" class="cn.happy.day04xmldi.Student" p:name="时秒" p:age="18" p:car-ref="car"></bean>
+
+
+    <!--构造注入-->
+    <bean id="student" class="cn.happy.day04xmldi.Student">
+        <constructor-arg index="0" value="时分"></constructor-arg>
+        <constructor-arg index="1" value="19"></constructor-arg>
+        <constructor-arg index="2" ref="car"></constructor-arg>
+    </bean>
+
+    <!--set方法注入-->
+    <bean id="car" class="cn.happy.day04xmldi.Car">
+        <property name="color" value="红色"></property>
+        <property name="brand" value="路虎"></property>
+    </bean>
+
+    <bean id="person" class="cn.happy.day04xmldi.Person">
+        <property name="name" value="小h"></property>
+        <property name="car" ref="car"></property>
+    </bean>
+</beans>

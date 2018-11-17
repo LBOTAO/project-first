@@ -13,7 +13,7 @@
     <bean id="afterAdvice" class="cn.happy.day03aop.aop.MyAfterAdvice"></bean>
     
     <aop:config>
-        <aop:pointcut id="mypointcut" expression="execution(* cn.happy.day03aop.service.*.*(..))"></aop:pointcut>
+        <aop:pointcut id="mypointcut" expression="execution(* cn.happy.day03aop.service.*.de*(..))"></aop:pointcut>
         <aop:advisor advice-ref="beforeAdvice" pointcut-ref="mypointcut"></aop:advisor>
         <aop:advisor advice-ref="afterAdvice" pointcut-ref="mypointcut"></aop:advisor>
     </aop:config>
