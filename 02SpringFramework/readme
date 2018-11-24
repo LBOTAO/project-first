@@ -27,8 +27,70 @@ spring依赖注入  ：
          构造注入
          p命名空间 注入  本质上还是set方法注入
 
+
 bean  ：---》》autowire:
 
-   byType: 按照对象的类型进行注入  如果多个类型匹配  使用要注入对象的变量名作为bean的id
-   byName:直接按照bean的id注入
+   byType: 按照对象的类型进行注入  如果多个类型匹配 就会报错     使用要注入对象的变量名作为bean的id
+   byName:直接按照bean的id注入   bean的id和实体类中的属性名匹配
 
+
+集合注入：---   array list set  map  properties
+
+aop的专业术语：
+1. 通知： 就是我们编写的希望Aop时执行的那个方法。我们通过Aop希望我们编写的方法在目标方法执行前执行，或者执行后执行。
+2. 切点：
+  符合咱们的切点表达式的方法
+切点就是我们我们配置的满足我们条件的目标方法。比如我们规定：名字前面是select开头的才执行我们自定义的通知方法。那么这些select开头的方法就是切点。
+3. 连接点：连接点可以说是切点的全集。切点是连接点的子集。也可以理解为，连接点是我们没有定义那个select开头规则时，满足条件的全部的方法。
+4. 切面：切面是切点和通知（增强）的组合称谓，就是变相给组合起了个名字。
+5.目标对象：
+6.织入：增强和切点 进行运行时动态绑定的过程叫织入
+7.代理对象：  一个类被AOP织入后生成出了一个结果类，它是融合了原类和增强逻辑的代理类。
+
+
+
+---2018年11月20日14:41:50----------------------------------------
+spring 中  bean 默认是单例的
+变成单例的方法：  <bean id="" class="" scope="prototype"></bean>
+
+---
+在spring当中  进行域属性注入有两种手段：
+     01.@Resource
+     02.@AutoWired  结合  @Qualifier使用
+
+  @Resource    默认按照byName名称  进行装配
+   （
+    拥有该注解的字段名称必须和spring容器现有名称的bean的id相同，
+
+  @Resource比较智能  当根据byname方式装配方式失败以后，它会接着尝试bytype的方式。
+  只要容器中有类型相同的bean也会自动装配
+  ）
+
+
+  @AutoWired   默认按照byType类型装配
+  拥有该字段的注解类型    （必须跟现有spring容器中的bean的类型相同  ：
+    如果发现有相同多个类型的bean   会抛出异常）
+
+ @Qualifier  （将此注解和@Autowired注解混合使用时  强制使用byName方式进行装配  不符合装配失败）
+
+ 代理
+
+jdk动态代理   ： 面向接口进行代理
+cglib动态代理 ：   面向类进行代理
+
+2018年11月22日17:19:13-----------------------------------------
+顾问： 也就是通知（增强）  只不过我们将它包装升级了。。如果不使用会将目标方法中的所有方法进行增强。
+顾问也就像aspactj中的切点表达式  可以过滤掉某些  不想增强  的方法
+
+2018年11月24日14:26:40===
+顾问中  无论方法匹配切入点顾问   还是正则匹配切入点顾问   都扫描的是全类名中的内容 --------------------------注意
+
+
+自动代理：   org.springframework.aop.support.RegexpMethodPointcutAdvisor  ：只对顾问。。。。。
+
+          org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator  顾问  和增强  都可以
+
+
+ Spring之AOP报错：Null return value from advice does not match primitive return type for================
+
+ 解决方案：：： aop报错应该是在CglibAopProxy的这段代码,测试了一下改成int的包装类型Integer就好了。

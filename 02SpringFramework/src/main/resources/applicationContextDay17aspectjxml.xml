@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--目标对象-->
+    <bean id="someService" class="cn.happy.day17aspectjxml.SomeService"></bean>
+    <!--增强对象-->
+    <bean id="myAspectj" class="cn.happy.day17aspectjxml.MyAspectj"></bean>
+    
+    
+    <aop:config>
+        <aop:pointcut id="myPointcut" expression="execution(* *..day17aspectjxml.*.*(..))"></aop:pointcut>
+        <aop:aspect ref="myAspectj">
+            <!--前置-->
+            <aop:before method="beforeAspect" pointcut-ref="myPointcut"></aop:before>
+            <!--后置-->
+            <!--<aop:after-returning method="AfterReturningAspect" pointcut-ref="myPointcut"></aop:after-returning>-->
+            <!--环绕-->
+           <!-- <aop:around method="AroundAspect" pointcut-ref="myPointcut"></aop:around>-->
+            <!--异常-->
+           <!-- <aop:after-throwing method="AfterThrowingAspect" pointcut-ref="myPointcut"></aop:after-throwing>-->
+            <!--最终-->
+            <!--<aop:after method="AfterAspect" pointcut-ref="myPointcut"></aop:after>-->
+        </aop:aspect>
+    </aop:config>
+
+</beans>
