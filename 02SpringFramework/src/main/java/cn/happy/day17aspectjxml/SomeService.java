@@ -15,7 +15,7 @@ public class SomeService {
         return 6;
     }
     public Integer delete(){
-        //int result=5/0;
+        ///int result=5/0;
         System.out.println("delete function");
         return 2;
     }
