@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.happy.day02mapping.onetomany.entity">
+	<class name="LinkMan" table="cst_linkman">
+		<id name="lkmId" column="lkm_id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="lkmName" column="lkm_name"></property>
+		<property name="lkmGender" column="lkm_gender"></property>
+		<property name="lkmPhone" column="lkm_phone"></property>
+		<property name="lkmMobile" column="lkm_mobile"></property>
+		<property name="lkmEmail" column="lkm_email"></property>
+		<property name="lkmPosition" column="lkm_position"></property>
+		<property name="lkmMemo" column="lkm_memo"></property>
+
+		<!--
+	 一对多关联映射  从表的映射配置
+	    涉及的标签
+	    many-to-one  建立多对一的映射配置
+	    name:   从表包含主表的对象引用名
+	    class:  指定属性所对应实体
+	    column：指定从表中外键字段名
+	-->
+		<many-to-one name="customer" class="Customer" column="lkm_cust_id" cascade="save-update"></many-to-one>
+	</class>
+</hibernate-mapping>
