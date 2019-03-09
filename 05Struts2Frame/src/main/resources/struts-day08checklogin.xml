@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"></constant>
+
+    <constant name="struts.action.extension" value="do"></constant>
+
+    <package name="myDefaultAction" extends="struts-default" abstract="true">
+        <interceptors>
+            <interceptor name="CheckLoginInterceptor2" class="cn.happy.day07checklogin.interceptors.CheckLoginInterceptor2"></interceptor>
+            <!--定义自己的拦截器栈-->
+            <interceptor-stack name="MyInterceptorStack">
+                <interceptor-ref name="CheckLoginInterceptor2">
+                    <!--过滤掉不需要拦截的方法-->
+                    <param name="excludeMethods">userLogin</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <!--指定默认的拦截器栈-->
+        <default-interceptor-ref name="MyInterceptorStack"/>
+
+        <global-results>
+            <result name="login">/day08checklogin/login.jsp</result>
+        </global-results>
+    </package>
+
+    <package name="day08" extends="myDefaultAction" namespace="/day08">
+        <action name="demo1" class="cn.happy.day07checklogin.action.BBSAction" method="demo1">
+            <result name="success">/day08checklogin/demo1.jsp</result>
+        </action>
+        <action name="demo2" class="cn.happy.day07checklogin.action.BBSAction" method="demo2">
+            <result name="success">/day08checklogin/demo2.jsp</result>
+        </action>
+        <action name="demo3" class="cn.happy.day07checklogin.action.BBSAction" method="demo3">
+            <result name="success">/day08checklogin/demo3.jsp</result>
+        </action>
+        <action name="isLogin" class="cn.happy.day07checklogin.action.BBSAction" method="userLogin">
+            <result name="success">/day08checklogin/main.jsp</result>
+        </action>
+    </package>
+</struts>

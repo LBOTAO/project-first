@@ -1,0 +1,110 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!--开启开发者模式  修改配置文件  不需要重启服务器-->
+    <constant name="struts.devMode" value="true"></constant>
+
+    <!-- 设定访问后缀为.do -->
+    <constant name="struts.action.extension" value="do"></constant>
+
+    <!--开启动态方法调用-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+
+    <!-- package标签：
+            作用：给访问的action进行分包管理。把配置文件按照面向对象的思想来管理。
+            属性：
+              name：指定包的名称。必须写，并且必须唯一。
+              extends：指定当前包的父包。子包自动具备父包所定义的配置。我们的包一般都需要继承struts-default包。
+                             该包在struts-defaul.xml文件中定义着。如果不继承该包，则不能使用struts2的核心功能。
+              abstract：把当前包声明为抽象包。抽象包就是用来被继承的。里面定义一般都是公共的配置。
+                          只有没有action标签的包，才能定义为抽象包。
+              namespace：指定当前包的名称空间。它可以让我们的访问URL模块化。当我们指定了该属性，访问URL就变成了：名称空间+/hello
+                          名称空间的写法：第一个字符必须是/，后面紧跟的字符必须是一个字母。其余内容可以是字母，也可以是数字。
+                          例如：我们访问用户
+                              /user/addUser.action
+                              /user/updateUser.action
+                          名称空间有默认值。默认值是：""
+    -->
+    <package name="p1" extends="struts-default" namespace="/n1">
+        <!--
+
+        作用：
+	        建立动作名称和动作类以及动作方法的对应关系。
+        属性：
+            name：指定的动作名称。和页面中url后面保持一种。注意此处不能后缀。动作名称必须唯一。
+            class：指定的是动作类的全限定类名。
+            method：指定的是动作方法名称
+
+
+         	动作类的三种创建方式
+				第一种方式：无侵入式的 		实际开发用的不多
+					例如：HelloAction
+				第二种方式：实现接口的方式		实际开发中用的也不多
+					我们的动作要实现一个接口：Action
+					例如：Hello2Action
+					默认动作方法：当我们要是执行的是execute方法时，method属性可以不写。
+				第三种方式：继承ActionSupport的方式			以后我们编写的动作都需要继承ActionSupport
+					例如:Hello3Action
+
+				默认动作类：
+					它就是ActionSupport
+
+        -->
+        <action name="hello" class="cn.happy.day01helloworld.action.HelloAction" method="sayHello">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>
+
+        <action name="hello2" class="cn.happy.day01helloworld.action.Hello2Action" method="execute">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>
+
+        <action name="hello3" class="cn.happy.day01helloworld.action.Hello3Action" method="hello3">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>
+
+        <action name="hello4" >
+            <result name="success" type="dispatcher">/success.jsp</result>
+        </action>
+    </package>
+
+    <!--访问action的三种方式-->
+    <package name="user" extends="struts-default">
+        <!--全名称访问-->
+        <!--<action name="addUser" class="cn.happy.day01helloworld.action.UserAction" method="addUser">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>
+        <action name="updateUser" class="cn.happy.day01helloworld.action.UserAction" method="updateUser">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>
+        <action name="deleteUser" class="cn.happy.day01helloworld.action.UserAction" method="deleteUser">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>
+        <action name="findUser" class="cn.happy.day01helloworld.action.UserAction" method="findUser">
+            <result name="success" type="dispatcher">/day01helloworld/success.jsp</result>
+        </action>-->
+
+
+        <!--通配符的基本用法-->
+        <!--<action name="*" class="cn.happy.day01helloworld.action.UserAction" method="{1}">
+            <result name="success">/day01helloworld/success.jsp</result>
+        </action>-->
+        <!--通配符的高级用法-->
+        <action name="*_*" class="cn.happy.day01helloworld.action.{2}Action" method="{1}{2}">
+            <result name="success">/day01helloworld/success.jsp</result>
+        </action>
+
+        <!--使用动态方法调用-->
+        <action name="user" class="cn.happy.day01helloworld.action.UserAction">
+            <result name="success">/day01helloworld/success.jsp</result>
+        </action>
+    </package>
+    <!--植入多个struts.xml文件-->
+    <include file="struts-day02result.xml"></include>
+    <include file="struts-day03servletapi.xml"></include>
+    <include file="struts-day04params.xml"></include>
+    <include file="struts-day05ognl.xml"></include>
+    <include file="struts-day06contextmap.xml"></include>
+    <include file="struts-day07interceptor.xml"></include>
+    <include file="struts-day08checklogin.xml"></include>
+</struts>

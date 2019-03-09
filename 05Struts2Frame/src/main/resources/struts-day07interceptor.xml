@@ -1,0 +1,20 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"></constant>
+    <constant name="struts.action.extension" value="do"></constant>
+
+    <package name="day07" extends="struts-default" namespace="/day07">
+        <interceptors>
+            <interceptor name="MyInterceptor" class="cn.happy.day06interceptor.interceptor.MyInterceptor"></interceptor>
+            <interceptor name="MyInterceptor2" class="cn.happy.day06interceptor.interceptor.MyInterceptor2"></interceptor>
+        </interceptors>
+        <action name="demo1" class="cn.happy.day06interceptor.action.Demo1Action" method="demo1">
+            <interceptor-ref name="MyInterceptor"></interceptor-ref>
+            <interceptor-ref name="MyInterceptor2"></interceptor-ref>
+            <result name="success">/day07interceptor/success.jsp</result>
+            <result name="error">/day07interceptor/error.jsp</result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,28 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!--开启开发者模式  修改配置文件  不需要重启服务器-->
+    <constant name="struts.devMode" value="true"></constant>
+    <!-- 设定访问后缀为.do -->
+    <constant name="struts.action.extension" value="do"></constant>
+
+   <package name="day04" namespace="/" extends="struts-default">
+       <action name="demo1" class="cn.happy.day04params.action.Demo1Action" method="demo1">
+           <result name="success">/day04params/success.jsp</result>
+       </action>
+       <action name="demo2" class="cn.happy.day04params.action.Demo2Action" method="demo2">
+           <result name="success">/day04params/success.jsp</result>
+       </action>
+       <action name="demo3" class="cn.happy.day04params.action.Demo3Action" method="demo3">
+           <result name="success">/day04params/success.jsp</result>
+           <result name="input">/day04params/index.jsp</result>
+       </action>
+       <action name="demo4" class="cn.happy.day04params.action.Demo4Action" method="demo4">
+           <result name="success">/day04params/success.jsp</result>
+       </action>
+       <action name="demo5" class="cn.happy.day04params.action.Demo5Action" method="demo5">
+           <result name="success">/day04params/success.jsp</result>
+       </action>
+    </package>
+</struts>

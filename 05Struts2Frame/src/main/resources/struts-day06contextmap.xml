@@ -1,0 +1,21 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"></constant>
+    <constant name="struts.action.extension" value="do"></constant>
+
+    <package name="day05" extends="struts-default" namespace="/day05">
+        <action name="demo1" class="cn.happy.day05contextmap.action.Demo1Action" method="demo1">
+            <result name="success">/day06contextmap/demo1.jsp</result>
+        </action>
+
+        <action name="demo2" class="cn.happy.day05contextmap.action.Demo2Action" method="demo2">
+            <result name="success">/day06contextmap/demo2.jsp</result>
+        </action>
+
+        <action name="demo3" class="cn.happy.day05contextmap.action.Demo3Action" method="demo3">
+            <result name="success">/day06contextmap/demo3.jsp</result>
+        </action>
+    </package>
+</struts>

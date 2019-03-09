@@ -1,0 +1,8 @@
+获取servlet api 的两种方式
+    使用工具类：ServletActionContext类
+    实现特定的接口
+
+er表达式三个没有：
+    没有空指针异常
+    没有下标越界
+    没有字符串拼接
