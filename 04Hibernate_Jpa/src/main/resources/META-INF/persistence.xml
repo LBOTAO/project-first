@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <!--Name属性用于定义持久化单元的名字 (name必选,空值也合法);
+      transaction-type 指定事务类型(可选)
+          取值：
+              JTA：默认值
+              RESOURCE_LOCAL
+ -->
+    <persistence-unit name="myPersistUnit" transaction-type="RESOURCE_LOCAL">
+     <!--JPA的提供商-->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!-- 显式列出实体类,在Java SE 环境中应该显式列出.(可选) -->
+        <class>cn.happy.day03jpa.entity.Customer</class>
+        <!--厂商专有属性(可选) 我们用的Hibernate，后面都是hibernate.cfg.xml中配置-->
+        <properties>
+            <!-- 生成DDL的策略 -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <!-- 数据库的连接信息 -->
+            <property name="hibernate.connection.driver_class"
+                      value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/hibernate_jpa"/>
+            <property name="hibernate.connection.username" value="root" />
+            <property name="hibernate.connection.password" value="123" />
+            <!-- 指定方言 -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL5Dialect" />
+            <!-- 是否显示SQL语句 -->
+            <property name="hibernate.show_sql" value="true" />
+            <!-- 是否格式化SQL语句 -->
+            <property name="hibernate.format_sql" value="true" />
+            <!--hibernate 配置c3p0连接池-->
+            <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"></property>
+        </properties>
+    </persistence-unit>
+</persistence>
